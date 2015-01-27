@@ -1,0 +1,10 @@
+@import "config";
+
+// No-js fallback
+// Add "nav-no-js" class to <html>
+
+.#{$nav-no-js} {
+  nav li:hover > ul {
+    display: block; // CSS drop down effect if javascript is disabled
+  }
+}

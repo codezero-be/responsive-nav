@@ -1,0 +1,17 @@
+@viewport { width: device-width; }
+@-ms-viewport { width: device-width; }
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+}

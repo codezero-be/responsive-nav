@@ -1,0 +1,42 @@
+// ==============
+// General Config
+// ==============
+
+// Nav Colors
+$nav-text-color: #A69A94;
+$nav-link-color: #8C827D;
+$nav-link-color-hover: #923600;
+$nav-bg-color: #26201C;
+$nav-bg-color-hover: #2E2722;
+$nav-horizontal-divider-color: #59544F;
+
+// Header Colors
+$header-text-color: $nav-text-color;
+$header-link-color: $nav-link-color;
+$header-bg-color: $nav-bg-color;
+
+// Font
+$nav-line-height: 4.4rem;
+$header-line-height: $nav-line-height;
+
+// Z-index
+$nav-z-index: 900; // Each sub menu will add +1 to this value
+$header-z-index: $nav-z-index + 1; // On top of nav
+
+// At what break point should the navigation no longer be mobile?
+$nav-desktop-breakpoint: 960px;
+
+// Add this class to your <html> for no-js functionality
+$nav-no-js: "nav-no-js";
+
+// ==============
+// Desktop Config
+// ==============
+
+// Top level sub menu's positioning inside their parent <li> (drop down)
+$nav-submenu-offset-top: 100%;
+$nav-submenu-offset-left: 0;
+
+// Subsequent sub menu's positioning inside their parent <li> (pop left)
+$nav-sub-submenu-offset-top: 5px;
+$nav-sub-submenu-offset-left: 95%;

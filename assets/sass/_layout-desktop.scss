@@ -1,0 +1,65 @@
+@import "config";
+
+body {
+  padding: 0 !important; // Header no longer fixed
+}
+
+header {
+  position: relative;
+
+  // Title Icon (See "_icon-font.scss")
+  h1:before {
+    @extend %icon;
+    content: icon-char(desktop);
+  }
+}
+
+.nav-button {
+  display: none;
+}
+
+nav {
+  display: block;
+  position: relative;
+
+  // Remove top border from top menu
+  > ul > li {
+    border-top: none;
+  }
+
+  // Add a border to sub menu's
+  li > ul {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  // Sub Sub Sub Menu
+  ul ul ul {
+    border-radius: 0 6px 6px 6px;
+
+    // Remove top border from menu's that pop left or right
+    li:first-child {
+      border-top: none;
+    }
+  }
+
+  .nav-left > ul {
+    border-radius: 6px 0 6px 6px; // Rounder corners except top right
+  }
+
+  .submenu li {
+    padding: 0; // No need for padding-left anymore
+    min-width: 110px;
+  }
+
+  // Top Menu Icon (See "_icon-font.scss")
+  > ul > .submenu > a:after {
+    @extend %icon;
+    content: icon-char(submenu-down);
+  }
+
+  // Sub Menu Icon (See "_icon-font.scss")
+  .submenu > a:after {
+    @extend %icon;
+    content: icon-char(submenu-right);
+  }
+}

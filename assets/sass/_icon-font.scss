@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "icon-font";
+  src: url('../fonts/icon-font.eot');
+  src: url('../fonts/icon-font.eot?#iefix') format('eot'),
+       url('../fonts/icon-font.woff') format('woff'),
+       url('../fonts/icon-font.ttf') format('truetype'),
+       url('../fonts/icon-font.svg#icon-font') format('svg');
+}
+
+%icon {
+  font-family: "icon-font";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+  text-decoration: none;
+  text-transform: none;
+  vertical-align: top;
+}
+
+@function icon-char($filename) {
+  $char: "";
+  
+  @if $filename == desktop {
+    $char: "\E001";
+  }
+  @if $filename == menu-close {
+    $char: "\E002";
+  }
+  @if $filename == menu {
+    $char: "\E003";
+  }
+  @if $filename == mobile {
+    $char: "\E004";
+  }
+  @if $filename == submenu-down {
+    $char: "\E005";
+  }
+  @if $filename == submenu-right {
+    $char: "\E006";
+  }
+  @if $filename == world {
+    $char: "\E007";
+  }
+  @return $char;
+}
+
+@mixin icon($filename, $insert: before) {
+  &:#{$insert} {
+    @extend %icon;
+    content: icon-char($filename);
+  }
+}
+
+.icon-desktop {
+  @include icon(desktop);
+}
+.icon-menu-close {
+  @include icon(menu-close);
+}
+.icon-menu {
+  @include icon(menu);
+}
+.icon-mobile {
+  @include icon(mobile);
+}
+.icon-submenu-down {
+  @include icon(submenu-down);
+}
+.icon-submenu-right {
+  @include icon(submenu-right);
+}
+.icon-world {
+  @include icon(world);
+}

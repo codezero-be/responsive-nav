@@ -1,0 +1,54 @@
+@import "config";
+
+nav {
+  overflow: visible;
+
+  // All List Items
+  li {
+    position: relative; // Sub menu's will be positioned by this
+    white-space: nowrap;
+  }
+
+  // Top Menu List Items
+  > ul > li {
+    display: inline-block; // Put them next to each other
+  }
+
+  // Top Menu
+  ul {
+    display: block; // Always display the "top" menu
+
+    // Sub Menu
+    ul {
+      display: none; // Hide sub menu's by default
+      position: absolute;
+      top: $nav-submenu-offset-top; // Position below parent <li>
+      left: $nav-submenu-offset-left;
+      z-index: $nav-z-index + 1;
+
+      // Sub Sub Menu
+      ul {
+        top: $nav-sub-submenu-offset-top;
+        left: $nav-sub-submenu-offset-left; // Position to the right of the parent <li>
+        z-index: $nav-z-index + 2;
+
+        // Sub Sub Sub Menu
+        ul {
+          z-index: $nav-z-index + 3;
+
+          // Sub Sub Sub Sub Menu
+          ul {
+            z-index: $nav-z-index + 4;
+          }
+        }
+      }
+
+      // If the <li> has a .nav-left class
+      // then open its sub menu on the left
+      li.nav-left > ul {
+        left: auto;
+        right: $nav-sub-submenu-offset-left; // Position to the left of the parent <li>
+      }
+    }
+  }
+}

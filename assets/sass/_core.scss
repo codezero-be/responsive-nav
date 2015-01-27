@@ -1,0 +1,30 @@
+@import "config";
+
+.nav-close {
+  display: none; // Only used on mobile if no-js
+}
+
+nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $nav-z-index;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  ul {
+    display: none;
+    position: relative; // IE9 and below <ul> slideDown() fix
+    zoom: 1; // IE9 and below <ul> slideDown() fix
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a, a:hover, a:active, a:visited {
+    display: block; // Make the entire width of the <li> clickable
+    position: relative; // For :after icon positioning
+  }
+}

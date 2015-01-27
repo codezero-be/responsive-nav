@@ -1,0 +1,24 @@
+@import "config";
+
+// No-js fallback for mobile only
+// Add "nav-no-js" class to <html>
+
+.#{$nav-no-js} {
+  .nav-close {
+    position: fixed;
+    top: 0;
+    right: $header-line-height;
+    z-index: $header-z-index + 1;
+    font-size: 1.7rem;
+    line-height: $header-line-height;
+    text-align: center;
+    background: $header-bg-color;
+    color: $nav-link-color;
+
+    // Close Button Icon (See "_icon-font.scss")
+    &:before {
+      @extend %icon;
+      content: icon-char(menu-close);
+    }
+  }
+}

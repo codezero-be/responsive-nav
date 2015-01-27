@@ -1,0 +1,120 @@
+@import "config";
+
+body {
+  padding-top: $nav-line-height; // Fixed header space
+}
+
+header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $header-z-index;
+  padding-left: 10px;
+  line-height: $header-line-height;
+  background: $header-bg-color;
+  color: $header-text-color;
+
+  h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: $header-line-height;
+
+    // Title Icon (See "_icon-font.scss")
+    &:before {
+      @extend %icon;
+      content: icon-char(mobile);
+      margin-right: 8px;
+    }
+  }
+}
+
+.nav-button {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: $header-line-height;
+  height: $header-line-height;
+  z-index: $header-z-index + 1;
+  cursor: pointer;
+  text-align: center;
+  line-height: $header-line-height;
+  background: $header-bg-color;
+  color: $header-text-color;
+
+  // Menu Button Icon (See "_icon-font.scss")
+  &:before {
+    @extend %icon;
+    content: icon-char(menu);
+  }
+}
+
+nav {
+  line-height: $nav-line-height;
+  background: $nav-bg-color;
+  color: $nav-text-color;
+
+  // Top Menu
+  ul {
+    border-radius: 0 0 6px 6px;
+    background: $nav-bg-color;
+
+    // Sub Menu
+    ul {
+      background: lighten($nav-bg-color, 3%);
+
+      // Sub Sub Menu
+      ul {
+        background: lighten($nav-bg-color, 6%);
+
+        // Sub Sub Sub Menu
+        ul {
+          background: lighten($nav-bg-color, 9%);
+
+          // Sub Sub Sub Sub Menu
+          ul {
+            background: lighten($nav-bg-color, 12%);
+          }
+        }
+      }
+    }
+  }
+
+  // All List Items
+  li {
+    border-top: 1px solid $nav-horizontal-divider-color;
+    cursor: pointer;
+  }
+
+  .submenu li {
+    padding-left: 10px; // Give all sub menu's some padding-left
+  }
+
+  li:hover > a {
+    color: $nav-link-color-hover;
+    background: $nav-bg-color-hover; // li:hover for "sub menu trail" highlights ;)
+  }
+
+  .submenu > a {
+    padding-right: 30px !important; // Some space for a sub menu icon
+  }
+
+  a, a:hover, a:active, a:visited {
+    border-radius: 6px;
+    padding: 0 15px 1px; // Will not overrule .submenu > a
+    color: $nav-link-color;
+    text-decoration: none;
+  }
+
+  // Sub Menu Icon (See "_icon-font.scss")
+  .submenu > a:after {
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 1px;
+    @extend %icon;
+    content: icon-char(submenu-down);
+  }
+}
