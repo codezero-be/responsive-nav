@@ -10,9 +10,9 @@
   }
 
   .nav-button:hover ~ nav + .nav-close,
-  .nav-button:hover ~ nav > ul,
+  .nav-button:hover ~ nav ul,
   nav:hover + .nav-close,
-  nav:hover > ul {
+  nav:hover ul {
     display: block; // Open menu and show close button
   }
 }
