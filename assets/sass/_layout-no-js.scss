@@ -4,14 +4,17 @@
 // Add "nav-no-js" class to <html>
 
 .#{$nav-no-js} {
-  .nav-close {
+  .nav-close a {
     position: fixed;
     top: 0;
-    right: $header-line-height;
+    right: 4.0rem;
+    width: 2.4rem;
+    height: $header-line-height;
     z-index: $header-z-index + 1;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     line-height: $header-line-height;
     text-align: center;
+    text-decoration: none;
     background: $header-bg-color;
     color: $nav-link-color;
 

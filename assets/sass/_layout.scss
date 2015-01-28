@@ -30,16 +30,18 @@ header {
   }
 }
 
-.nav-button {
+.nav-button a {
   display: block;
   position: fixed;
   top: 0;
-  right: 0;
-  width: $header-line-height;
+  right: 1.0rem;
+  width: 2.4rem;
   height: $header-line-height;
   z-index: $header-z-index + 1;
   cursor: pointer;
   text-align: center;
+  text-decoration: none;
+  font-size: 1.7rem;
   line-height: $header-line-height;
   background: $header-bg-color;
   color: $header-text-color;
