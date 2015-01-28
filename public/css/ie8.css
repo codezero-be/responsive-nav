@@ -42,7 +42,12 @@ nav ul ul li.nav-left > ul {
 	right: 95%;
 }
 
-body {
+.nav-no-js nav li:hover > ul {
+	display: block;
+}
+
+body,
+nav {
 	padding: 0 !important;
 }
 
@@ -84,8 +89,11 @@ nav .nav-left > ul {
 }
 
 nav .submenu li {
-	padding: 0;
 	min-width: 110px;
+}
+
+nav .submenu > ul {
+	margin: 0;
 }
 
 nav > ul > .submenu > a:after {
