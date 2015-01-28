@@ -1,6 +1,6 @@
 @import "config";
 
-body {
+body, nav {
   padding: 0 !important; // Header no longer fixed
 }
 
@@ -19,7 +19,6 @@ header {
 }
 
 nav {
-  top: 0 !important; // Header no longer fixed
   display: block;
   position: relative;
 
