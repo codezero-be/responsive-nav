@@ -19,6 +19,7 @@ header {
 }
 
 nav {
+  top: 0 !important; // Header no longer fixed
   display: block;
   position: relative;
 
@@ -47,8 +48,11 @@ nav {
   }
 
   .submenu li {
-    padding: 0; // No need for padding-left anymore
     min-width: 110px;
+  }
+
+  .submenu > ul {
+    margin: 0; // No need for margin-left anymore
   }
 
   // Top Menu Icon (See "_icon-font.scss")

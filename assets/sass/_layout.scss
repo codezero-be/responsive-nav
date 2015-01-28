@@ -1,6 +1,6 @@
 @import "config";
 
-body, nav {
+body {
   padding-top: $nav-line-height; // Fixed header space
 }
 
@@ -52,6 +52,7 @@ header {
 }
 
 nav {
+  top: $nav-line-height; // Fixed header space
   line-height: $nav-line-height;
   background: $nav-bg-color;
   color: $nav-text-color;
@@ -88,13 +89,13 @@ nav {
     cursor: pointer;
   }
 
-  .submenu li {
-    padding-left: 10px; // Give all sub menu's some padding-left
-  }
-
   li:hover > a {
     color: $nav-link-color-hover;
     background: $nav-bg-color-hover; // li:hover for "sub menu trail" highlights ;)
+  }
+
+  .submenu > ul {
+    margin-left: 10px; // Give all sub menu's some margin-left
   }
 
   .submenu > a {
