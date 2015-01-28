@@ -1,15 +1,15 @@
 # Responsive Navigation #
 
-**CSS only - jQuery plugin coming soon!**
+**Works with CSS only - jQuery plugin coming soon!**
 
-This project is an attempt to create an easy to implement navigation system that even works with CSS only. This functions as a decent fallback if for some reason our jQuery plugin is not available. 
+This project is an attempt to create a navigation system that works even without javascript, with CSS only. This functions as a decent fallback if for some reason our jQuery plugin is not available. Our jQuery plugin (coming soon) will add some sugar to the navigation, making it more user friendly and a bit more awesome... :)
 
 #### Tested in: ####
 
 - IE 8 (needs [extra effort](#ie-8-fixes))
 - IE 9 and above
-- Firefox & Chrome
-- Android 4.3 and above
+- Firefox & Chrome on Windows
+- Android 4.3 and above (native browser, FF and Chrome)
 - ... 
 
 ## Website Setup ##
@@ -79,9 +79,9 @@ IE 8 doesn't support media queries, so you should also inlude our `ie8.css` **af
 
 ### Basic HTML Structure ###
 
-For CSS-only functionality, it is important to place `.nav-button` right before `<nav>` and `.nav-close` right after `<nav>`. The buttons can be positioned anywhere using `absolute` positioning.
+For CSS-only functionality, it is important to place `.nav-button` right before `<nav>` and `.nav-close` right after `<nav>`. It is best to style the link inside it, because it works better for mobile touch. These links can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available.
 
-    <div class="nav-button"></div>
+    <div class="nav-button"><a href="#"></a></div>
 
     <nav>
       <ul>
@@ -89,15 +89,13 @@ For CSS-only functionality, it is important to place `.nav-button` right before 
       </ul>
     </nav>
 
-    <div class="nav-close"></div>
-
-The `.nav-close` button will only show up if our jQuery plugin is not available.
+    <div class="nav-close"><a href="#"></a></div>
 
 > **TIP:** You could also create an extra `.nav-button` anywhere in the DOM that will only be shown if our jQuery plugin is loaded. The original one can then be hidden. Just add your own class and write the CSS to show/hide when appropriate. 
 
 ### Sub Menu's ###
 
-Each "link" should be wrapped in an `<a>` tag for styling purposes. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute:
+Each "link" should be wrapped in an `<a>` tag for styling purposes. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to enable touch navigation in "desktop" mode!
 
     <nav>
       <ul>
@@ -110,7 +108,15 @@ Each "link" should be wrapped in an `<a>` tag for styling purposes. If you don't
       </ul>
     </nav>
 
-> **IMPORTANT:** We experienced issues where newer smartphones (Samsung S4) "think" we want to touch links rather than a `<span>` etc. Because of this, every menu item (including sub menu's) should be in a `<a>` tag with  `href` attribute. When not using javascript, a `#` link won't  trigger a page reload, which is essential if you want to navigate into a sub menu with touch. It's not perfect, but it works.
+> **IMPORTANT:** We experienced issues where some smartphones (Samsung S4) "think" we want to touch links rather than a `<span>` etc. Because of this, every "touchable" item (including sub menu's) should be `<a>` tags with  `href` attribute.
+
+#### Why sub menu's are not collapsed on mobiles without JS... ####
+
+There was one more issue when not using javascript on mobiles (at least on the Samsung S4). If you would open a sub menu in the top level and then touch the next sub menu in the top level, that sub menu would open and the previous one would close.
+
+Unfortunately, there is some kind of delay. When the previous menu closes, the one you touched moves upwards. However, the phone seems to remember the touch position on the screen and actually activates the link that ends up under your finger.
+
+So we decided not to collapse the sub menu's on mobiles if you don't use our jQuery plugin.
 
 ### Nav Wrappers? ###
 
