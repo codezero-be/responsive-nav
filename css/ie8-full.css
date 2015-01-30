@@ -1,21 +1,21 @@
-nav {
+.nav {
 	overflow: visible;
 }
 
-nav li {
+.nav li {
 	position: relative;
 	white-space: nowrap;
 }
 
-nav > ul > li {
+.nav > ul > li {
 	display: inline-block;
 }
 
-nav ul {
+.nav ul {
 	display: block;
 }
 
-nav ul ul {
+.nav ul ul {
 	display: none;
 	position: absolute;
 	top: 100%;
@@ -23,31 +23,30 @@ nav ul ul {
 	z-index: 901;
 }
 
-nav ul ul ul {
+.nav ul ul ul {
 	top: 5px;
 	left: 95%;
 	z-index: 902;
 }
 
-nav ul ul ul ul {
+.nav ul ul ul ul {
 	z-index: 903;
 }
 
-nav ul ul ul ul ul {
+.nav ul ul ul ul ul {
 	z-index: 904;
 }
 
-nav ul ul li.nav-left > ul {
+.nav ul ul li.nav-left > ul {
 	left: auto;
 	right: 95%;
 }
 
-.nav-no-js nav li:hover > ul {
+.nav-no-js .nav li:hover > ul {
 	display: block;
 }
 
-body,
-nav {
+body {
 	padding: 0 !important;
 }
 
@@ -63,44 +62,45 @@ header h1:before {
 	display: none;
 }
 
-nav {
+.nav {
 	display: block;
 	position: relative;
+	padding: 0 !important;
 }
 
-nav > ul > li {
+.nav > ul > li {
 	border-top: none;
 }
 
-nav li > ul {
+.nav li > ul {
 	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-nav ul ul ul {
+.nav ul ul ul {
 	border-radius: 0 6px 6px 6px;
 }
 
-nav ul ul ul li:first-child {
+.nav ul ul ul li:first-child {
 	border-top: none;
 }
 
-nav .nav-left > ul {
+.nav .nav-left > ul {
 	border-radius: 6px 0 6px 6px;
 }
 
-nav .submenu li {
+.nav .nav-submenu li {
 	min-width: 110px;
 }
 
-nav .submenu > ul {
+.nav .nav-submenu > ul {
 	margin: 0;
 }
 
-nav > ul > .submenu > a:after {
+.nav > ul > .nav-submenu > a:after {
 	content: icon-char(submenu-down);
 }
 
-nav .submenu > a:after {
+.nav .nav-submenu > a:after {
 	content: icon-char(submenu-right);
 }
 
