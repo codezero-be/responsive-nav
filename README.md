@@ -87,11 +87,11 @@ Ideally you would concatenate all CSS files into one file, but for clarity I'll 
 
 ### Basic HTML Structure ###
 
-For CSS-only functionality, it is important to place `.nav-button` link right before `<nav>` and `.nav-close` right after `<nav>`. These need to be links, because it works better for mobile touch. These can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available.
+For CSS-only functionality, it is important to place `.nav-button` link right before `<nav>` and `.nav-close` right after `<nav>`. These need to be links, because it works better for mobile touch, and can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available. The `<nav>` tag should also have a `.nav` class, as there might be other nav areas that shouldn't be styled.
 
     <a href="#" class="nav-button">Menu</a>
 
-    <nav>
+    <nav class="nav">
       <ul>
         <li><a href="/link/to/page">Link</a></li>
       </ul>
@@ -107,7 +107,7 @@ You could create an extra `.nav-button` anywhere in the DOM that would only be s
 
 Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to enable touch navigation in "desktop" mode! Dont forget to add the `.nav-submenu` class to the `<li>` containing the sub menu.
 
-    <nav>
+    <nav class="nav">
       <ul>
         <li><a href="/link/to/page">Link</a></li>
         <li class="nav-submenu"><a href="#">Sub Menu</a>
