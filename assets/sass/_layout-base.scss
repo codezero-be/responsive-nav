@@ -30,21 +30,36 @@ header {
   }
 }
 
-.nav-button {
-  display: block;
+.nav-button, .nav-close {
   position: fixed;
   top: 0;
-  right: 1.0rem;
   width: 2.4rem;
   height: $header-line-height;
+  padding-left: 2.4rem; // Hide "Menu" text
+  overflow: hidden; // Hide "Menu" text
   z-index: $header-z-index + 1;
   cursor: pointer;
-  text-align: center;
   text-decoration: none;
-  font-size: 1.7rem;
   line-height: $header-line-height;
   background: $header-bg-color;
   color: $header-text-color;
+
+  // Menu Button Icon (See "_icon-font.scss")
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+  }
+}
+
+.nav-button {
+  display: block;
+  right: 1.0rem;
+  font-size: 1.7rem;
 
   // Menu Button Icon (See "_icon-font.scss")
   &:before {
@@ -55,6 +70,14 @@ header {
 
 .nav-close {
   display: none; // Only used on mobile if no-js
+  right: 4.0rem;
+  font-size: 1.9rem;
+
+  // Close Button Icon (See "_icon-font.scss")
+  &:before {
+    @extend %icon;
+    content: icon-char(menu-close);
+  }
 }
 
 nav {

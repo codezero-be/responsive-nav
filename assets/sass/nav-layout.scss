@@ -2,12 +2,6 @@
 @import "icon-font";
 @import "layout-base";
 
-@media only screen and (max-width: $nav-desktop-breakpoint - 1px) {
-
-  @import "layout-no-js-mobile";
-
-}
-
 @media only screen and (min-width: $nav-desktop-breakpoint) {
 
   @import "layout-desktop";

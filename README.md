@@ -87,9 +87,9 @@ Ideally you would concatenate all CSS files into one file, but for clarity I'll 
 
 ### Basic HTML Structure ###
 
-For CSS-only functionality, it is important to place `.nav-button` right before `<nav>` and `.nav-close` right after `<nav>`. It is best to style the link inside it, because it works better for mobile touch. These links can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available.
+For CSS-only functionality, it is important to place `.nav-button` link right before `<nav>` and `.nav-close` right after `<nav>`. These need to be links, because it works better for mobile touch. These can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available.
 
-    <a href="#" class="nav-button"></a>
+    <a href="#" class="nav-button">Menu</a>
 
     <nav>
       <ul>
@@ -97,7 +97,7 @@ For CSS-only functionality, it is important to place `.nav-button` right before 
       </ul>
     </nav>
 
-    <a href="#" class="nav-close"></a>
+    <a href="#" class="nav-close">Close Menu</a>
 
 > **IMPORTANT:** We experienced issues where some smartphones (Samsung S4) "think" we want to touch links rather than a `<span>` etc. Because of this, every "touchable" item (including sub menu's) should be `<a>` tags with  `href` attribute.
 
