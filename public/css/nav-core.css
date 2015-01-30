@@ -1,4 +1,4 @@
-nav {
+.nav {
 	display: block;
 	position: fixed;
 	top: 0;
@@ -9,7 +9,7 @@ nav {
 	overflow-y: auto;
 }
 
-nav ul {
+.nav ul {
 	display: none;
 	position: relative;
 	zoom: 1;
@@ -18,34 +18,34 @@ nav ul {
 	padding: 0;
 }
 
-nav a,
-nav a:hover,
-nav a:active,
-nav a:visited {
+.nav a,
+.nav a:hover,
+.nav a:active,
+.nav a:visited {
 	display: block;
 	position: relative;
 }
 
 @media only screen and (min-width: 960px) {
 
-nav {
+.nav {
 	overflow: visible;
 }
 
-nav li {
+.nav li {
 	position: relative;
 	white-space: nowrap;
 }
 
-nav > ul > li {
+.nav > ul > li {
 	display: inline-block;
 }
 
-nav ul {
+.nav ul {
 	display: block;
 }
 
-nav ul ul {
+.nav ul ul {
 	display: none;
 	position: absolute;
 	top: 100%;
@@ -53,26 +53,26 @@ nav ul ul {
 	z-index: 901;
 }
 
-nav ul ul ul {
+.nav ul ul ul {
 	top: 5px;
 	left: 95%;
 	z-index: 902;
 }
 
-nav ul ul ul ul {
+.nav ul ul ul ul {
 	z-index: 903;
 }
 
-nav ul ul ul ul ul {
+.nav ul ul ul ul ul {
 	z-index: 904;
 }
 
-nav ul ul li.nav-left > ul {
+.nav ul ul li.nav-left > ul {
 	left: auto;
 	right: 95%;
 }
 
-.nav-no-js nav li:hover > ul {
+.nav-no-js .nav li:hover > ul {
 	display: block;
 }
 
@@ -80,16 +80,16 @@ nav ul ul li.nav-left > ul {
 
 @media only screen and (max-width: 959px) {
 
-.nav-no-js .nav-button:hover ~ nav,
-.nav-no-js nav:hover {
+.nav-no-js .nav-button:hover ~ .nav,
+.nav-no-js .nav:hover {
 	bottom: 0;
 }
 
-.nav-no-js .nav-button:hover ~ nav + .nav-close,
-.nav-no-js .nav-button:hover ~ nav ul,
-.nav-no-js nav:hover + .nav-close,
-.nav-no-js nav:hover ul,
-.nav-no-js nav > ul:hover ul {
+.nav-no-js .nav-button:hover ~ .nav + .nav-close,
+.nav-no-js .nav-button:hover ~ .nav ul,
+.nav-no-js .nav:hover + .nav-close,
+.nav-no-js .nav:hover ul,
+.nav-no-js .nav > ul:hover ul {
 	display: block;
 }
 

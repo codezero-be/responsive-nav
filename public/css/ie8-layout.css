@@ -1,5 +1,4 @@
-body,
-nav {
+body {
 	padding: 0 !important;
 }
 
@@ -15,44 +14,45 @@ header h1:before {
 	display: none;
 }
 
-nav {
+.nav {
 	display: block;
 	position: relative;
+	padding: 0 !important;
 }
 
-nav > ul > li {
+.nav > ul > li {
 	border-top: none;
 }
 
-nav li > ul {
+.nav li > ul {
 	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-nav ul ul ul {
+.nav ul ul ul {
 	border-radius: 0 6px 6px 6px;
 }
 
-nav ul ul ul li:first-child {
+.nav ul ul ul li:first-child {
 	border-top: none;
 }
 
-nav .nav-left > ul {
+.nav .nav-left > ul {
 	border-radius: 6px 0 6px 6px;
 }
 
-nav .submenu li {
+.nav .nav-submenu li {
 	min-width: 110px;
 }
 
-nav .submenu > ul {
+.nav .nav-submenu > ul {
 	margin: 0;
 }
 
-nav > ul > .submenu > a:after {
+.nav > ul > .nav-submenu > a:after {
 	content: icon-char(submenu-down);
 }
 
-nav .submenu > a:after {
+.nav .nav-submenu > a:after {
 	content: icon-char(submenu-right);
 }
 
