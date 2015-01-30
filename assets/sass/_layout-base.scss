@@ -1,6 +1,6 @@
 @import "config";
 
-body, nav {
+body {
   padding-top: $nav-line-height; // Fixed header space
 }
 
@@ -80,7 +80,8 @@ header {
   }
 }
 
-nav {
+.nav {
+  padding-top: $nav-line-height; // Fixed header space
   line-height: $nav-line-height;
   background: $nav-bg-color;
   color: $nav-text-color;

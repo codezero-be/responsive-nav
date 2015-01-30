@@ -1,6 +1,6 @@
 @import "config";
 
-body, nav {
+body {
   padding: 0 !important; // Header no longer fixed
 }
 
@@ -18,9 +18,10 @@ header {
   display: none;
 }
 
-nav {
+.nav {
   display: block;
   position: relative;
+  padding: 0 !important; // Header no longer fixed
 
   // Remove top border from top menu
   > ul > li {
