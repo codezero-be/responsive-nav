@@ -76,10 +76,10 @@ config.css = {
 
 config.js = {
     sourceMaps: dev,
-    uglify: production,
 
     // Browserify Settings
     browserify: {
+        uglify: false,
         src: 'assets/js/',
         mainFilename: 'main.js',
         dest: 'compiled/',
@@ -88,8 +88,20 @@ config.js = {
 
     // Concatenation Settings
     concat: {
+        uglify: false,
         files: [],
         outputFilename: 'scripts.js',
+        dest: 'public/js/'
+    },
+
+    // Minify Files Settings
+    uglify: {
+        enabled: true,
+        files: [
+            'public/js/*.js', //=> Concat output
+            '!public/js/*.min.js' //=> Not already minified files
+        ],
+        suffix: '.min',
         dest: 'public/js/'
     }
 };
@@ -388,7 +400,7 @@ gulp.task('css-notification', function () {
  * Browserify JS:
  * - Compile the main JS file with it's dependencies/modules
  * - Use source maps (dev)
- * - Uglify JS (production)
+ * - Uglify JS
  */
 
 gulp.task('browserify-js', function () {
@@ -403,7 +415,7 @@ gulp.task('browserify-js', function () {
         .pipe(config.js.sourceMaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
 
         // Uglify JS (production)
-        .pipe(config.js.uglify ? uglify() : gutil.noop())
+        .pipe(config.js.browserify.uglify ? uglify() : gutil.noop())
 
         // Save source map
         .pipe(config.js.sourceMaps ? sourcemaps.write() : gutil.noop())
@@ -432,7 +444,7 @@ gulp.task('watch-browserify', function () {
  * Concatenate JS:
  * - Concatenate JS files with source maps (dev)
  * - Concatenate JS files without source maps (production)
- * - Uglify JS (production)
+ * - Uglify JS
  */
 
 gulp.task('concat-js', function () {
@@ -446,7 +458,7 @@ gulp.task('concat-js', function () {
         .pipe(concat(config.js.concat.outputFilename))
 
         // Uglify JS (production)
-        .pipe(config.js.uglify ? uglify() : gutil.noop())
+        .pipe(config.js.concat.uglify ? uglify() : gutil.noop())
 
         // Save source map
         .pipe(config.js.sourceMaps ? sourcemaps.write() : gutil.noop())
@@ -454,6 +466,31 @@ gulp.task('concat-js', function () {
         // Save output to destination folder
         .pipe(gulp.dest(config.js.concat.dest));
 });
+
+/**
+ * Uglify JS:
+ */
+
+gulp.task('uglify-js', function () {
+    // Fetch CSS files
+    return gulp.src(config.js.uglify.files)
+
+        // Start source map
+        .pipe(config.js.sourceMaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+
+        // Uglify JS
+        .pipe(uglify())
+
+        // Add file suffix
+        .pipe(rename({suffix: config.js.uglify.suffix}))
+
+        // Save source map
+        .pipe(config.js.sourceMaps ? sourcemaps.write() : gutil.noop())
+
+        // Save output to destination folder
+        .pipe(gulp.dest(config.js.uglify.dest));
+});
+
 
 /**
  * Clean Up JS Output (production)
@@ -482,7 +519,7 @@ gulp.task('js-notification', function () {
  */
 
 gulp.task('js', function (cb) {
-    runSequence('browserify-js', 'concat-js', 'cleanup-js', 'js-notification', cb);
+    runSequence('browserify-js', 'concat-js', 'uglify-js', 'cleanup-js', 'js-notification', cb);
 });
 
 /**
