@@ -53,6 +53,10 @@ header {
   }
 }
 
+.nav-close {
+  display: none; // Only used on mobile if no-js
+}
+
 nav {
   line-height: $nav-line-height;
   background: $nav-bg-color;
