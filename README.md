@@ -105,12 +105,12 @@ You could create an extra `.nav-button` anywhere in the DOM that would only be s
 
 ### Sub Menu's ###
 
-Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to enable touch navigation in "desktop" mode!
+Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to enable touch navigation in "desktop" mode! Dont forget to add the `.nav-submenu` class to the `<li>` containing the sub menu.
 
     <nav>
       <ul>
         <li><a href="/link/to/page">Link</a></li>
-        <li class="submenu"><a href="#">Sub Menu</a>
+        <li class="nav-submenu"><a href="#">Sub Menu</a>
           <ul>
             <li><a href="/link/to/sub/page">Link</a></li>
           </ul>

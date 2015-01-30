@@ -122,11 +122,11 @@ nav {
     background: $nav-bg-color-hover; // li:hover for "sub menu trail" highlights ;)
   }
 
-  .submenu > ul {
+  .nav-submenu > ul {
     margin-left: 10px; // Give all sub menu's some margin-left
   }
 
-  .submenu > a {
+  .nav-submenu > a {
     padding-right: 30px !important; // Some space for a sub menu icon
   }
 
@@ -138,7 +138,7 @@ nav {
   }
 
   // Sub Menu Icon (See "_icon-font.scss")
-  .submenu > a:after {
+  .nav-submenu > a:after {
     position: absolute;
     display: block;
     right: 10px;

@@ -46,22 +46,22 @@ nav {
     border-radius: 6px 0 6px 6px; // Rounder corners except top right
   }
 
-  .submenu li {
+  .nav-submenu li {
     min-width: 110px;
   }
 
-  .submenu > ul {
+  .nav-submenu > ul {
     margin: 0; // No need for margin-left anymore
   }
 
   // Top Menu Icon (See "_icon-font.scss")
-  > ul > .submenu > a:after {
+  > ul > .nav-submenu > a:after {
     @extend %icon;
     content: icon-char(submenu-down);
   }
 
   // Sub Menu Icon (See "_icon-font.scss")
-  .submenu > a:after {
+  .nav-submenu > a:after {
     @extend %icon;
     content: icon-char(submenu-right);
   }
