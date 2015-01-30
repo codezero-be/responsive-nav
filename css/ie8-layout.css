@@ -1,0 +1,58 @@
+body,
+nav {
+	padding: 0 !important;
+}
+
+header {
+	position: relative;
+}
+
+header h1:before {
+	content: icon-char(desktop);
+}
+
+.nav-button {
+	display: none;
+}
+
+nav {
+	display: block;
+	position: relative;
+}
+
+nav > ul > li {
+	border-top: none;
+}
+
+nav li > ul {
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+nav ul ul ul {
+	border-radius: 0 6px 6px 6px;
+}
+
+nav ul ul ul li:first-child {
+	border-top: none;
+}
+
+nav .nav-left > ul {
+	border-radius: 6px 0 6px 6px;
+}
+
+nav .submenu li {
+	min-width: 110px;
+}
+
+nav .submenu > ul {
+	margin: 0;
+}
+
+nav > ul > .submenu > a:after {
+	content: icon-char(submenu-down);
+}
+
+nav .submenu > a:after {
+	content: icon-char(submenu-right);
+}
+
