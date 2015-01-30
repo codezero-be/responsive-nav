@@ -1,8 +1,8 @@
 @import "config";
 @import "icon-font";
 
-@import "core";
-@import "layout";
+@import "core-base";
+@import "layout-base";
 
 @media only screen and (max-width: $nav-desktop-breakpoint - 1px) {
 
