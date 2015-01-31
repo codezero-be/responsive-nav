@@ -1,9 +1,16 @@
 @import "config";
 
+// Used by jQuery to prevent body scrolling
+// when the menu is being used
+.nav-lock-scroll {
+  overflow: hidden;
+}
+
 .nav {
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: $nav-z-index;
@@ -11,7 +18,7 @@
   overflow-y: auto;
 
   ul {
-    display: none;
+    display: block;
     position: relative; // IE9 and below <ul> slideDown() fix
     zoom: 1; // IE9 and below <ul> slideDown() fix
     list-style-type: none;

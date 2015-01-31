@@ -4,16 +4,10 @@
 // Add "nav-no-js" class to <html>
 
 .#{$nav-no-js} {
-  .nav-button:hover ~ .nav,
-  .nav:hover {
-    bottom: 0; // Fullscreen nav on hover
-  }
-
-  .nav-button:hover ~ .nav + .nav-close,
-  .nav-button:hover ~ .nav ul,
-  .nav:hover + .nav-close,
-  .nav:hover ul,
-  .nav > ul:hover ul {
-    display: block; // Open menu and show close button
+  .nav-button:hover + .nav,
+  .nav:hover,
+  .nav-button:hover + .nav + .nav-close,
+  .nav:hover + .nav-close {
+    display: block; // Open nav and show close button
   }
 }

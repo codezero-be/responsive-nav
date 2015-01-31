@@ -98,8 +98,8 @@ config.js = {
     uglify: {
         enabled: true,
         files: [
-            'public/js/*.js', //=> Concat output
-            '!public/js/*.min.js' //=> Not already minified files
+            'assets/js/*.js', //=> Concat output
+            '!assets/js/*.min.js' //=> Not already minified files
         ],
         suffix: '.min',
         dest: 'public/js/'

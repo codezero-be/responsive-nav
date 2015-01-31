@@ -118,7 +118,8 @@ header {
     cursor: pointer;
   }
 
-  li:hover > a {
+  li:hover > a,
+  li.nav-active > a { // .nav-active is used by jQuery
     color: $nav-link-color-hover;
     background: $nav-bg-color-hover; // li:hover for "sub menu trail" highlights ;)
   }

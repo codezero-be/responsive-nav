@@ -1,6 +1,9 @@
 @import "config";
 
 .nav {
+  display: block;
+  position: relative;
+  bottom: auto; // No more full screen nav
   overflow: visible;
 
   // All List Items
