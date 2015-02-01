@@ -62,7 +62,7 @@ config.css = {
     minify: {
         enabled: true,
         files: [
-            'public/css/*.css', //=> Concat output
+            'public/css/*.css',
             '!public/css/*.min.css' //=> Not already minified files
         ],
         suffix: '.min',
@@ -98,7 +98,7 @@ config.js = {
     uglify: {
         enabled: true,
         files: [
-            'assets/js/*.js', //=> Concat output
+            'assets/js/*.js',
             '!assets/js/*.min.js' //=> Not already minified files
         ],
         suffix: '.min',
@@ -120,6 +120,7 @@ config.copy = {
             src: [
                 "bower_components/rem-unit-polyfill/js/rem.min.js",
                 "bower_components/html5shiv/dist/html5shiv.min.js"
+                //'assets/js/*.js'
             ],
             dest: "public/js/"
         },
@@ -476,7 +477,7 @@ gulp.task('uglify-js', function () {
     return gulp.src(config.js.uglify.files)
 
         // Start source map
-        .pipe(config.js.sourceMaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
+        .pipe(config.js.sourceMaps ? sourcemaps.init() : gutil.noop())
 
         // Uglify JS
         .pipe(uglify())
@@ -490,7 +491,6 @@ gulp.task('uglify-js', function () {
         // Save output to destination folder
         .pipe(gulp.dest(config.js.uglify.dest));
 });
-
 
 /**
  * Clean Up JS Output (production)
