@@ -1,26 +1,33 @@
 # Responsive Navigation #
 
-**Works with CSS only - jQuery plugin coming soon!**
+**Works with CSS only - [jQuery plugin](#enable-jquery-plugin) available too!**
 
-This project is an attempt to create a navigation system that provides basic functionality even without javascript, with CSS only. This gives us a decent fallback if our jQuery plugin is not available for some reason.
+### Functional CSS-only navigation ###
 
-The first goal was to see how far we could go with CSS alone. Every site should be usable without javascript (and also without CSS for that matter). We tried to make it as "advanced" as we possibly could, but we are however limited by the CSS selectors. Drop down effects with CSS provide very basic functionality, but it's not ideal.
+This project is an attempt to create a navigation system that provides basic functionality even without javascript, with CSS only. This gives us a decent fallback if our [jQuery plugin](#enable-jquery-plugin) is not available for some reason.
 
-Our jQuery plugin (coming soon) will add some sugar to the navigation, making it more user friendly and a bit more awesome... :)
+The first goal was to see how far we could go with CSS alone. Every site should be usable without javascript (and also without CSS for that matter). We tried to make it as "advanced" as we possibly could, but we are however limited by the CSS selectors. Drop down effects with CSS provide basic functionality, but it's not ideal.
 
-#### Tested in: ####
+### jQuery for some awesomeness ###
+
+Our [jQuery plugin](#enable-jquery-plugin) adds some sugar to the navigation, making it more user friendly and a bit more awesome... :)
+
+With our jQuery plugin you can traverse the sub menu's by **touch** or **clicking** and optionally by **moving your mouse** over it. If you're a **keyboard** fan, then you can spam your `tab` key to the menu and hit `enter` to open or close a sub menu (or open a link of course).
+
+### Should work on... ###
 
 - IE 8 (needs [extra effort](#ie-8-fixes))
 - IE 9 and above
-- Firefox & Chrome on Windows
-- Android 4.3 and above (native browser, FF and Chrome)
+- Firefox
+- Chrome
+- Android 4.3 and above
 - ... 
 
 ## Website Setup ##
 
 ### Add `.nav-no-js` Class to `<html>` ###
 
-This class will let CSS handle the `:hover`  effects for opening and closing the menu. If our jQuery plugin is loaded, it will remove this class and take over for some nicer effects!
+This class will let CSS handle the `:hover`  effects for opening and closing the menu. If our [jQuery plugin](#enable-jquery-plugin) is loaded, it will remove this class and take over for some nicer effects!
 
     <!DOCTYPE html>
     <html lang="en" class="nav-no-js">
@@ -83,11 +90,45 @@ Ideally you would concatenate all CSS files into one file, but for clarity I'll 
 
     <script src="js/rem.min.js"></script>
 
+> In the `public/js` folder, you will find `*-core.css`, `*-layout.css` and `*-full.css` files. The latter combines the first two, so you can choose what files you want to use. A minified version is also included. The original [SASS files](#customizing-sass) are in the `assets/sass` folder.  
+
+### Enable jQuery Plugin ###
+
+To enable our jQuery plugin, you will need to include jQuery and our plugin script and then run `.nav()` on your `<nav>`. Too increase page loading speed you might want to add this right before your closing `</body>` tag.
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/nav.jquery.min.js"></script>
+    <script>
+        $('.nav').nav();
+    </script>
+
+You can set some options when calling `.nav()`:
+
+    $('.nav').nav({
+        // Mobile menu button selector
+        navButton: '.nav-button',
+        // Sub menu selector (<li>)
+        subMenu: '.nav-submenu',
+        // Open sub menu's on mouse over
+        // when not in mobile mode
+        mouseOver: true,
+        // When clicking/touching a sub menu link, it will open the sub menu...
+        // Not disabling the links will make sub menu's unreachable on touch devices!
+        // A link with [href="#"] will always be disabled, regardless of this setting.
+        // Disable the actual link in a particular mode:
+        //   always|never|mobile|desktop
+        disableSubMenuLink: 'always',
+        // How fast should a sub menu open/close? (ms)
+        slideSpeed: 500
+    });
+
 ## Navigation Usage & Restrictions ##
 
 ### Basic HTML Structure ###
 
-For CSS-only functionality, it is important to place `.nav-button` link right before `<nav>` and `.nav-close` right after `<nav>`. These need to be links, because it works better for mobile touch, and can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our jQuery plugin is not available. The `<nav>` tag should also have a `.nav` class, as there might be other nav areas that shouldn't be styled.
+For CSS-only functionality, it is important to place `.nav-button` link right before `<nav>` and `.nav-close` right after `<nav>`. These need to be links, because that works better for mobile touch. The links can be positioned anywhere using `absolute` positioning. The `.nav-close` button will only show up if our [jQuery plugin](#enable-jquery-plugin) is not available.
+
+The `<nav>` tag should also have a `.nav` class, as there might be other nav areas that shouldn't be styled.
 
     <a href="#" class="nav-button">Menu</a>
 
@@ -99,13 +140,13 @@ For CSS-only functionality, it is important to place `.nav-button` link right be
 
     <a href="#" class="nav-close">Close Menu</a>
 
-> **IMPORTANT:** We experienced issues where some smartphones (Samsung S4) "think" we want to touch links rather than a `<span>` etc. Because of this, every "touchable" item (including sub menu's) should be `<a>` tags with  `href` attribute.
+> **IMPORTANT:** We experienced issues where some smartphones (Samsung S4) "think" we want to touch links rather than a `<span>` etc. Because of this, every "touchable" item (including sub menu's) should be an `<a>` tag with  `href` attribute.
 
-You could create an extra `.nav-button` anywhere in the DOM that would only be shown if our jQuery plugin is loaded. The original one can then be hidden. Just add your own classes and write the CSS to show/hide when appropriate.
+> **TIP:** You could create an extra `.nav-button` anywhere in the DOM that would only be shown if our jQuery plugin is loaded. The original one can then be hidden. Just add your own classes and write the CSS to show/hide when appropriate.
 
 ### Sub Menu's ###
 
-Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to enable touch navigation in "desktop" mode! Dont forget to add the `.nav-submenu` class to the `<li>` containing the sub menu.
+Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link (sub menu), just write a `#` in the `href` attribute. It is recommended to use a `#` for sub menu's to allow for touch navigation! Dont forget to add the `.nav-submenu` class to the `<li>` containing the sub menu.
 
     <nav class="nav">
       <ul>
@@ -120,7 +161,7 @@ Each "link" should be wrapped in an `<a>` tag. If you don't want an actual link 
 
 #### Why sub menu's are not collapsed on mobiles without JS... ####
 
-There was one more issue when not using javascript on mobiles (at least on the Samsung S4). If you would open a sub menu in the top level and then touch the next sub menu in the top level, that sub menu would open and the previous one would close.
+There was one more issue when not using javascript on mobiles (at least on the Samsung S4). If you would open a sub menu in the top level and then touch the next sub menu in the top level, that sub menu would open and the previous one would close. (Duh!)
 
 Unfortunately, there is some kind of delay. When the previous menu closes, the one you touched moves upwards. However, the phone seems to remember the touch position on the screen and actually activates the link that ends up under your finger.
 
@@ -144,7 +185,7 @@ The SCSS files are split to make editting them a bit easier:
 
 ### Icon Font ###
 
-The included web font is generated by a Gulp plugin with the [included Gulpfile](https://github.com/codezero-be/gulp-workflow), and contains the `.svg` icons in `assets/icon-font/`. You can also use another icon font. Just remove the references in the `nav-*.scss` files and edit/remove the icon styles in the `_layout-*.scss` files.
+The included web font is generated by a [Gulp plugin](https://www.npmjs.com/package/gulp-iconfont) with the [included Gulpfile](https://github.com/codezero-be/gulp-workflow), and contains the `.svg` icons in `assets/icon-font`. You can also use another icon font. Just remove the references in the `nav-*.scss` files and edit/remove the icon styles in the `_layout-*.scss` files.
 
 > Example icons downloaded from [Flaticon](http://www.flaticon.com/).
 
@@ -152,7 +193,7 @@ The included web font is generated by a Gulp plugin with the [included Gulpfile]
 
 ### No keyboard navigation without javascript ###
 
-Regretably there is no CSS way to enable navigating through the drop down menu's with the `tab` key. The `tab` key triggers the `:focus` selector on the links, but not `:hover` on the parent `<li>`. So there is no way to keep the parent menu's open when tabbing into a sub menu... We will try to fix this with the jQuery plugin. 
+Regretably there is no CSS way to enable navigating through the drop down menu's with the `tab` key. The `tab` key triggers the `:focus` selector on the links, but not `:hover` on the parent `<li>`. So there is no way to keep the parent menu's open when tabbing into a sub menu... This does work when you use our jQuery plugin. 
 
 ### Close button not always showing on <= Android 4.3 (no-js) ###
 
