@@ -14,6 +14,8 @@
             self.subMenu = self.options.subMenu;
             self.mobileMode = self.isCurrentlyMobile(self);
             self.mouseOver = self.options.mouseOver;
+            self.disableSubMenuLink = self.options.disableSubMenuLink;
+            self.slideSpeed = self.options.slideSpeed;
 
             $('html').removeClass('nav-no-js');
             self.collapseSubMenus(self);
@@ -29,14 +31,21 @@
 
             // Click sub menu link
             self.$nav.on('click', self.subMenu + ' > a', function (event) {
-                self.toggleSubMenu(self, $(this).parent());
-                event.preventDefault();
+
+                var a = $(this);
+
+                // Check if link behavior should be disabled (option)
+                // If not, then there is no use in toggling the sub menu
+                if (self.isSubMenuLinkDisabled(self, a)) {
+                    self.toggleSubMenu(self, a.parent());
+                    event.preventDefault();
+                }
             });
 
-            if (self.mouseOver) {
+            if (self.mouseOver == true) {
                 // Mouse enter sub menu
                 self.$nav.on('mouseenter', self.subMenu, function () {
-                    if (self.mobileMode === false) {
+                    if (self.mobileMode == false) {
                         // Don't use mouse enter in mobile mode
                         self.openSubMenu(self, $(this));
                     }
@@ -44,7 +53,7 @@
 
                 // Mouse leave sub menu
                 self.$nav.on('mouseleave', self.subMenu, function () {
-                    if (self.mobileMode === false) {
+                    if (self.mobileMode == false) {
                         // Don't use mouse leave in mobile mode
                         self.closeSubMenu(self, $(this));
                     }
@@ -57,15 +66,26 @@
             });
         },
 
+        isSubMenuLinkDisabled: function (self, a) {
+            return self.disableSubMenuLink == 'always'
+                || a.attr('href') == '#'
+                || (self.disableSubMenuLink == 'mobile' && self.mobileMode == true)
+                || (self.disableSubMenuLink == 'desktop' && self.mobileMode == false);
+        },
+
         // Show or hide the navigation (mobile)
         toggleNav: function (self) {
-            if (self.$nav.is(':visible')) {
-                // If we're closing the nav,
-                // then also collapse sub menu's
-                self.collapseSubMenus(self);
-            }
-
-            self.$nav.stop().clearQueue().slideToggle();
+            self.$nav.stop().clearQueue().slideToggle(self.slideSpeed, function () {
+                var nav = $(this);
+                if (nav.is(':hidden')) {
+                    self.collapseSubMenus(self);
+                    // Clean up unwanted inline styles if someone spam clicks
+                    $(this).attr('style', 'display: none;');
+                } else {
+                    // Clean up unwanted inline styles if someone spam clicks
+                    $(this).attr('style', 'display: block;');
+                }
+            });
             self.$body.toggleClass('nav-lock-scroll');
         },
 
@@ -79,16 +99,23 @@
             // Activate clicked menu
             li.addClass('nav-active')
                 // And open it
-                .children('ul').stop().clearQueue().slideDown();
+                .children('ul').stop().clearQueue().slideDown(self.slideSpeed, function () {
+                    // Clean up unwanted inline styles if someone spam clicks
+                    $(this).attr('style', 'display: block;');
+                });
 
             // Deactivate all siblings
             li.siblings(self.subMenu).removeClass('nav-active')
                 // Close all sibling sub menu's
-                .children('ul').slideUp()
+                .children('ul').slideUp(self.slideSpeed, function () {
+                    $(this).clearQueue();
+                })
                 // Then deactivate their sub menu's
                 .find('.nav-active').removeClass('nav-active')
                 // And close them
-                .children('ul').slideUp();
+                .children('ul').slideUp(self.slideSpeed, function () {
+                    $(this).clearQueue();
+                });
 
         },
 
@@ -96,11 +123,16 @@
             // Deactivate clicked sub menu
             li.removeClass('nav-active')
                 // And close it
-                .children('ul').stop().clearQueue().slideUp()
+                .children('ul').stop().clearQueue().slideUp(self.slideSpeed, function () {
+                    // Clean up unwanted inline styles if someone spam clicks
+                    $(this).attr('style', 'display: none;');
+                })
                 // Deactivate sub menu's of the clicked sub menu
                 .find('.nav-active').removeClass('nav-active')
                 // And close them
-                .children('ul').slideUp();
+                .children('ul').slideUp(self.slideSpeed, function () {
+                    $(this).clearQueue();
+                });
         },
 
         // Reset nav when we switch from mobile
@@ -147,7 +179,25 @@
         subMenu: '.nav-submenu',
         // Open sub menu's on mouse over
         // when not in mobile mode
-        mouseOver: true
+        mouseOver: true,
+        // When clicking/touching a sub menu link, it will open the sub menu...
+        // Not disabling the links will make sub menu's unreachable on touch devices!
+        // A link with [href="#"] will always be disabled, regardless of this setting.
+        // Disable the actual link in a particular mode:
+        //   always|never|mobile|desktop
+        disableSubMenuLink: 'always',
+        // How fast should a sub menu open/close? (ms)
+        slideSpeed: 300
     };
 
 }(jQuery, window, document));
+
+// IE 8 doesn't know Object.create
+if (typeof Object.create !== 'function')
+{
+    Object.create = function(obj) {
+        function F() {}
+        F.prototype = obj;
+        return new F();
+    };
+}
