@@ -477,7 +477,7 @@ gulp.task('uglify-js', function () {
     return gulp.src(config.js.uglify.files)
 
         // Start source map
-        .pipe(config.js.sourceMaps ? sourcemaps.init() : gutil.noop())
+        .pipe(config.js.sourceMaps ? sourcemaps.init({loadMaps: true}) : gutil.noop())
 
         // Uglify JS
         .pipe(uglify())
