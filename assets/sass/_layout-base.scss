@@ -35,7 +35,6 @@ header {
   top: 0;
   width: 2.4rem;
   height: $header-line-height;
-  padding-left: 2.4rem; // Hide "Menu" text
   overflow: hidden; // Hide "Menu" text
   z-index: $header-z-index + 1;
   cursor: pointer;
@@ -47,11 +46,6 @@ header {
   // Menu Button Icon (See "_icon-font.scss")
   &:before {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     text-align: center;
   }
 }
