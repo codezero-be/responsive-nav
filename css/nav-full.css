@@ -122,7 +122,6 @@ header h1:before {
 	top: 0;
 	width: 2.4rem;
 	height: 4.4rem;
-	padding-left: 2.4rem;
 	overflow: hidden;
 	z-index: 902;
 	cursor: pointer;
@@ -135,11 +134,6 @@ header h1:before {
 .nav-button:before,
 .nav-close:before {
 	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	text-align: center;
 }
 
